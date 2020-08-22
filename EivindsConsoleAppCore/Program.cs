@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 
 
 namespace EivindsConsoleAppCore
@@ -27,23 +28,87 @@ namespace EivindsConsoleAppCore
 			// TwoDimensionalArrays();
 			// Comments();
 			// ExceptionHandling();
-			ClassesAndObjects();
+			// ClassesAndObjects();
+            // ObjectMethods();
+            // GettersAndSetter();
+            // StaticClassAttributes();
+            // StaticMethodsAndClasses();
+            Inheritance();
 
-			// https://www.youtube.com/watch?v=GhQdlIFylQ8
+        }
+
+        private static void Inheritance()
+        {
+            Chef chef = new Chef();
+			chef.MakeChicken();
+
+			ItalianChef italianChef = new ItalianChef();
+			italianChef.MakePasta();
+
+			chef.MakeSpecialDish();
+			italianChef.MakeSpecialDish();
+
+			/*
+			Viktigste konsepter i arv:
+			1) Å arve variabler og metoder fra superklassen
+			2) Å utvide funksjonaliteten til superklassen med egne variabler og metoder
+			3) Å overstyre (override) funksjonaliteten til superklassen med egen definisjon av metoder
+			*/
+
+        }
+
+        private static void StaticMethodsAndClasses()
+        {
+            Console.WriteLine(Math.Sqrt(144));
+			UsefulTools.SayHi("Eivind");
+
+        }
+
+        private static void StaticClassAttributes()
+        {
+            Song holiday = new Song("Holiday", "Green Day", 200);
+            Console.WriteLine(Song.songCount);
+			Song kashmir = new Song("Kashmir", "Led Zeppelin", 150);
+            Console.WriteLine(Song.songCount);
+			Console.WriteLine(kashmir.getSongCount());
+
+        }
+
+        private static void GettersAndSetter()
+        {
+            Movie avengers = new Movie("The Avengers", "Joss Whedon", "Dog");
+			Movie shrek = new Movie("Shrek", "Adam Adamson", "PG");
+            shrek.Rating = "Cat";
+
+			Console.WriteLine(avengers.Rating);
+            Console.WriteLine(shrek.Rating);
+
+            shrek.Rating = "R";
+            Console.WriteLine(shrek.Rating);
 		}
 
-		private static void ClassesAndObjects()
-		{
-			Book book1 = new Book();
-			book1.title = "Harry Potter";
-			book1.author = "JK Rowling";
-			book1.pages = 400;
+        private static void ObjectMethods()
+        {
+            Student student1 = new Student("Jim", "Business", 2.8);
+			Student student2 = new Student("Pam", "Art", 3.6);
 
-			Console.WriteLine(book1.title);
+			Console.WriteLine(student1.HasHonors());
+			Console.WriteLine(student2.HasHonors());
 
-		}
+        }
 
-	private static void ExceptionHandling()
+        private static void ClassesAndObjects()
+        {
+            Book book1 = new Book("Harry Potter", "JK Rowling", 400);
+            Book book2 = new Book("Lord Of the Rings", "Tolkien", 700);
+			Book book3 = new Book();
+
+            book2.title = "The hobbit";
+
+            Console.WriteLine(book2.title);
+        }
+
+        private static void ExceptionHandling()
 		{
 			try
 			{
